@@ -1,0 +1,8 @@
+Items Manage		{{route('')}}
+------------
+
+1.create resource route
+2.create controller (--resource)
+3.show route list(route:list)
+4.create blade (4 for GET Methods)
+5.
