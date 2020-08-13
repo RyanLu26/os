@@ -5,6 +5,31 @@
 	<div class="container-fluid">
 
 		<h2>Item Detail (UI)</h2>
+
+		<div class="row">
+			
+			<div class="col-md-6 col-6">
+
+				<img src="{{asset($item->photo)}}" class="img img-fluid">
+				
+			</div>
+
+			<div class="col-md-6 col-6 container-fluid">
+
+				
+					<label>Product Name :</label>
+					<span>{{$item->name}}</span><br>
+					<label>Product Code :</label>
+					<span>{{$item->codeno}}</span><br>
+					<label>Product Price :</label>
+					<span>{{$item->price}}</span><br>
+					<label>Description :</label>
+					<span>{{$item->description}}</span>
+				
+
+			</div>
+
+		</div>
 		
 	</div>
 

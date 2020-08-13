@@ -19,3 +19,8 @@ Route::resource('items','ItemController');
 	// get- 4 / post -1 / put -1 / del -1
 
 Route::resource('brands','BrandController');
+
+Route::resource('categories','CategoryController');
+
+Route::resource('subcategories','SubcategoryController');
+

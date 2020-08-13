@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Brand;
+use App\Category;
 
 
-class BrandController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('backend.brands.index');
+        return view('backend.categories.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('backend.brands.create');
+        return view('backend.categories.create');
     }
 
     /**
@@ -36,6 +36,7 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        
          //Validation
          $request -> validate([
 
@@ -47,20 +48,20 @@ class BrandController extends Controller
          //If file included, upload
          $imageName = time().'.'.$request->photo->extension();
 
-         $request->photo->move(public_path('backend/brandimg'),$imageName);
+         $request->photo->move(public_path('backend/categoryimg'),$imageName);
 
-         $myfile = 'backend/brandimg'.$imageName;
+         $myfile = 'backend/categoryimg'.$imageName;
 
          //Data Insert
-         $brand = new Brand;
-         $brand ->name = $request->name;
-         $brand ->photo = $myfile;
+         $category = new Category;
+         $category ->name = $request->name;
+         $category ->photo = $myfile;
 
-         $brand->save();
+         $category->save();
 
 
          //Redirect
-         return redirect()->route('brands.index');
+         return redirect()->route('categories.index');
     }
 
     /**
@@ -71,7 +72,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        return view('backend.brands.show');
+         return view('backend.categories.show');
     }
 
     /**
@@ -82,7 +83,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.brands.edit');
+         return view('backend.categories.edit');
     }
 
     /**
