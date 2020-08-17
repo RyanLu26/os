@@ -5,4 +5,36 @@ Items Manage		{{route('')}}
 2.create controller (--resource)
 3.show route list(route:list)
 4.create blade (4 for GET Methods)
-5.
+5.call specified 
+
+
+
+
+13.08.2020
+
+-list,edit,delete
+-validation error,Image Delete upadated database(only brand)
+
+UI
+--
+-filter item page --- DONE
+-item detail page --- DONE
+-checkout page ---- DONE
+-profile ---DONE
+-login and register ---DONE
+
+
+14.08.2020
+----------
+
+Frontend
+-filter item page(data binding)
+-profile page(link/retrieve)
+-auth(multi role)
+
+Backend
+-order retrieve
+	-(backend/oreders)
+	-create view(index.blade.php)
+	-show table(order list)
+	-OrderController / index

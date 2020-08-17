@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 
 		<h2>Item List Table</h2>
-		<a href="{{route('items.create')}}" class="btn btn-info">
+		<a href="{{route('items.index')}}" class="btn btn-info">
 			Add Item
 		</a>
 		

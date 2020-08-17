@@ -49,7 +49,10 @@ class Handler extends ExceptionHandler
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
-    {
+    {   
+        if($exception instanceof \Spatie\Permission\Exceptions\unauthorizedException){
+            return redirect('/');
+        }
         return parent::render($request, $exception);
     }
 }

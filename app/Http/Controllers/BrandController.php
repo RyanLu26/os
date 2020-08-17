@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brand;
+use App\Item;
 
 
 class BrandController extends Controller
@@ -14,8 +15,9 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.brands.index');
+    {   
+        $brands = Brand::all();
+        return view('backend.brands.index',compact('brands'));
     }
 
     /**
@@ -70,7 +72,8 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $brand = Brand::find($id);
         return view('backend.brands.show');
     }
 
@@ -81,8 +84,9 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view('backend.brands.edit');
+    {   
+        $brand =Brand::find($id);
+        return view('backend.brands.edit',compact('brand'));
     }
 
     /**
@@ -94,7 +98,36 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validation
+         $request -> validate([
+
+                    'name' => 'required',
+                    'photo' => 'required'
+
+                    ]);
+
+          //if file include,upload
+        if ($request->hasFile('photo')) {
+          $imageName = time().'.'.$request->photo->extension();
+
+          $request->photo->move(public_path('backend/brandimg'),$imageName);
+
+          $myfile = 'backend/brandimg/'.$imageName;
+
+          }else{
+            $myfile = $request->oldphoto;
+         }
+
+          //Data Insert
+         $brand = Brand::find($id);
+         $brand ->name = $request->name;
+         $brand ->photo = $myfile;
+
+         $brand->save();
+
+
+         //Redirect
+         return redirect()->route('brands.index');
     }
 
     /**
@@ -105,6 +138,10 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $brand = Brand::find($id);
+        $brand->delete();
+
+        return redirect()->route('brands.index');
     }
 }

@@ -24,7 +24,11 @@
 					<label>Product Price :</label>
 					<span>{{$item->price}}</span><br>
 					<label>Description :</label>
-					<span>{{$item->description}}</span>
+					<span>{{$item->description}}</span><br>
+					<label>Brand :</label>
+					<span>{{$item->brand->name}}</span><br>
+					<label>Subcategory :</label>
+					<span>{{$item->subcategory->name}}</span>
 				
 
 			</div>

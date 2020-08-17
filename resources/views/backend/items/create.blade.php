@@ -6,22 +6,17 @@
 
 		<h2>Item Create (Form)</h2>
 
-		@if($errors->any())
-			<div class="alert alert-danger">
-				<ul>
-					@foreach($errors->all() as $error)
-					<li>{{$error}}</li>
-				</ul>
-				@endforeach
-			</div>
-		@endif
 
 			<form method="post" action="{{route('items.store')}}" enctype="multipart/form-data">
 				@csrf
 				<div class="form-group">
-					<label>Code No</label>
+					<label for="cno">Code No</label>
 					<input type="text" name="codeno" class="form-control">
 				</div>
+				<div id="cno" type="text" class="@error('title') is-invalid @enderror">
+				@error('cno')
+				<div class="alert alert-danger">{{ $message }}</div>
+				@enderror
 				<div class="form-group">
 					<label>Name</label>
 					<input type="text" name="name" class="form-control">

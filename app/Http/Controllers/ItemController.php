@@ -14,6 +14,10 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
+
     public function index()
     {   
         $items = Item::all();
