@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BrandTableSeeder.php extends Seeder
+class BrandTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
