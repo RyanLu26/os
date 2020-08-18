@@ -14,8 +14,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.categories.index');
+    {   
+        $categories = Category::all();
+        return view('backend.categories.index',compact('categories'));
     }
 
     /**

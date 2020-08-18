@@ -23,11 +23,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					@php $i=1; @endphp
+					@foreach($categories as $category)
 					<tr>
-						<td>1</td>
-						<td>Category One</td>
+						<td>{{$i++}}</td>
+						<td>{{$category->name}}</td>
 						<td>
-							<img src="">
+							<img src="{{asset($category->photo)}}">
 						</td>
 						<td>
 							<a href="{{route('categories.show',1)}}" class="btn btn-warning">Detail</a>
@@ -35,7 +37,7 @@
 							<a href="#" class="btn btn-danger">Delete</a>
 						</td>
 					</tr>
-				
+					@endforeach
 				</tbody>
 			</table>
 

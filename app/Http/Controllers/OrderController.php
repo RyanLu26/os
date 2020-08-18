@@ -13,9 +13,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function FunctionName($value='')
+    {
+        $this->middleware('role:admin')->except('store');
+        $this->middleware('role:customer')->only('store');
+    }
+
     public function index()
     {
-        //
+        $orders=Order::all();
+        return view('backend.order.index',compact('orders'));
     }
 
     /**
@@ -25,7 +33,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -71,7 +79,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order=Order::find($id);
+        return view('backend.order.show',compact('order'));
     }
 
     /**
@@ -105,6 +114,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order=Order::find($id);
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 }
